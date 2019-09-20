@@ -7,9 +7,11 @@
 # Pull base image.
 FROM ubuntu:14.04
 
-RUN mkdir /default_volume
-RUN echo 'Created default volume.' >> /default_volume/cdv
-VOLUME /default_volume
+RUN mkdir -p /home/slammer
+RUN mkdir -p /home/slammer/LSD_SLAM
+WORKDIR /home/slammer/LSD_SLAM
+RUN echo 'Created default volume.' >> /home/slammer/LSD_SLAM/dockerfile_log_msg.txt
+VOLUME . /home/slammer/LSD_SLAM
 
 # Install.
 RUN \
