@@ -7,12 +7,6 @@
 # Pull base image.
 FROM ubuntu:14.04
 
-RUN mkdir -p /home/slammer
-RUN mkdir -p /home/slammer/LSD_SLAM
-WORKDIR /home/slammer/LSD_SLAM
-RUN echo 'Created default volume.' >> /home/slammer/LSD_SLAM/dockerfile_log_msg.txt
-VOLUME . /home/slammer/LSD_SLAM
-
 # Install.
 RUN \
   sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
@@ -36,3 +30,9 @@ WORKDIR /root
 
 # Define default command.
 CMD ["bash"]
+
+RUN mkdir -p /home/slammer
+RUN mkdir -p /home/slammer/LSD_SLAM
+WORKDIR /home/slammer/LSD_SLAM
+RUN echo 'Created default volume.' >> /home/slammer/LSD_SLAM/dockerfile_log_msg.txt
+VOLUME . /home/slammer/LSD_SLAM
